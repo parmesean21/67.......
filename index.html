@@ -133,6 +133,32 @@ button {
     width: 100%;
     border-radius: 4px;
 }
+    /* 📱 Mobile adjustments */
+@media (max-width: 480px) {
+
+    #popup img {
+        width: 280px; /* bigger image */
+    }
+
+    #popup h2 {
+        font-size: 22px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 14px 36px;
+    }
+
+    #yes, #no {
+        width: 140px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr; /* stack photos on mobile */
+        padding: 20px;
+    }
+}
+    
 </style>
 </head>
 
@@ -196,11 +222,15 @@ const choices = document.getElementById("choices");
 
 nextBtn.onclick = () => {
     index++;
-    if (index < messages.length) {
+
+    if (index === messages.length - 1) {
+        // Last message → show choices immediately
         text.textContent = messages[index];
-    } else {
         nextBtn.style.display = "none";
         choices.style.display = "block";
+    } 
+    else if (index < messages.length) {
+        text.textContent = messages[index];
     }
 };
 
@@ -221,5 +251,6 @@ noBtn.addEventListener("mouseover", () => {
 
 </body>
 </html>
+
 
 
