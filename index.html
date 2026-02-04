@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>For My Chichi 💗</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
@@ -57,7 +58,7 @@ body {
 }
 
 #popup img {
-    width: 220px;
+    width: min(75vw, 300px); /* IG-friendly */
     border-radius: 20px;
     margin-bottom: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -69,10 +70,10 @@ body {
 }
 
 button {
-    padding: 12px 28px;
+    font-size: 4.5vw;
+    padding: 3.5vw 8vw;
     border-radius: 30px;
     border: none;
-    font-size: 16px;
     cursor: pointer;
     margin: 10px;
 }
@@ -87,14 +88,9 @@ button {
     display: none;
 }
 
-#yes {
-    background: #ff6fa5;
-    color: white;
-}
-
-#no {
-    background: #ddd;
-    position: relative;
+#yes, #no {
+    width: 40vw;
+    max-width: 160px;
 }
 
 /* 💖 Final result */
@@ -251,6 +247,7 @@ noBtn.addEventListener("mouseover", () => {
 
 </body>
 </html>
+
 
 
 
