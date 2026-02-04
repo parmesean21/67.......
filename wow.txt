@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Chichi 💗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(to bottom, #ffe4ef, #ffd1e3);
+}
+
+/* 🌸 Cherry blossom rain */
+.sakura {
+    position: absolute;
+    top: -50px;
+    animation: fall linear infinite;
+    opacity: 0.9;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* 🌷 Tulips background */
+.tulips {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 38px;
+    opacity: 0.8;
+}
+
+/* 💌 Popup */
+#popup {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 214, 232, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+}
+
+#popup img {
+    width: 220px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#popup h2 {
+    color: #c94b7c;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#next {
+    background: #ff8fb8;
+    color: white;
+}
+
+/* 💘 Choices */
+#choices {
+    display: none;
+}
+
+#yes {
+    background: #ff6fa5;
+    color: white;
+}
+
+#no {
+    background: #ddd;
+    position: relative;
+}
+
+/* 💖 Final result */
+#result {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 228, 239, 0.98);
+    text-align: center;
+    padding-top: 40px;
+}
+
+#result h1 {
+    color: #d63384;
+    margin-bottom: 25px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 0 40px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌷 Tulips -->
+<div class="tulips">🌷🌷🌷🌷🌷🌷🌷🌷</div>
+
+<!-- 💌 Popup -->
+<div id="popup">
+    <img src="popup.png" alt="popup">
+    <h2 id="text">hi my chichi!</h2>
+    <button id="next">Next</button>
+
+    <div id="choices">
+        <button id="yes">Yes 💗</button>
+        <button id="no">No</button>
+    </div>
+</div>
+
+<!-- 💖 Result -->
+<div id="result">
+    <h1>YAYYY! I LOVE YOU SO MUCH BABY!</h1>
+
+    <div class="gallery">
+        <img src="her1.jpg">
+        <img src="her2.jpg">
+        <img src="her3.jpg">
+        <img src="her4.jpg">
+        <img src="her5.jpg">
+        <img src="her6.jpg">
+        <img src="her7.jpg">
+        <img src="her8.jpg">
+    </div>
+</div>
+
+<script>
+/* 🌸 Sakura generator */
+for (let i = 0; i < 35; i++) {
+    const petal = document.createElement("div");
+    petal.className = "sakura";
+    petal.textContent = "🌸";
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.fontSize = 14 + Math.random() * 18 + "px";
+    petal.style.animationDuration = 5 + Math.random() * 6 + "s";
+    document.body.appendChild(petal);
+}
+
+/* 💬 Message flow */
+const messages = [
+    "hi my chichi!",
+    "i have a question....",
+    "will you be my valentine?"
+];
+
+let index = 0;
+const text = document.getElementById("text");
+const nextBtn = document.getElementById("next");
+const choices = document.getElementById("choices");
+
+nextBtn.onclick = () => {
+    index++;
+    if (index < messages.length) {
+        text.textContent = messages[index];
+    } else {
+        nextBtn.style.display = "none";
+        choices.style.display = "block";
+    }
+};
+
+/* 💘 Yes */
+document.getElementById("yes").onclick = () => {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("result").style.display = "block";
+};
+
+/* 😈 No avoids cursor */
+const noBtn = document.getElementById("no");
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 100 - 50;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+</script>
+
+</body>
+</html>
